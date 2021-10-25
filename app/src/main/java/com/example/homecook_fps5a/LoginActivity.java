@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 
-public class Login extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText edId, edName, edAge;
     Button btnAdd, btnDelete, btnUpdate, btnFindAll, btnFind;
@@ -19,23 +19,29 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     // Create a reference for Firebase database
     DatabaseReference personDatabase, personChild;
 
-    TextView edUsername = (TextView) findViewById(R.id.edUsername);
-    TextView edPassword = (TextView) findViewById(R.id.edPassword);
-
-    Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
+    TextView edUsername,edPassword;
+    Button btnSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Initialize();
+    }
+
+    private void Initialize() {
+        edUsername = (TextView) findViewById(R.id.edUsername);
+        edPassword = (TextView) findViewById(R.id.edPassword);
+        btnSignIn = (Button) findViewById(R.id.btnSignIn);
     }
 
     @Override
     public void onClick(View view) {
         if (edUsername.getText().toString().equals("admin")&& edPassword.getText().toString().equals("admin")){
 
+            Toast.makeText(LoginActivity.this, "Sign GOOD!!!", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(Login.this, "Sign in FAILED!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Sign in FAILED!!!", Toast.LENGTH_SHORT).show();
         }
     }
 }
